@@ -2,8 +2,8 @@
 DSTR JAVA FINAL PROJECT REPOSITORY
 -------------------------------------------------------------------------
 You are in master branch
-Usernames -> Real Name
-Tetriminoss -> Michael Cruz
-ryanRedDragon -> Ryan
-z33ga -> Adel
-yasumami -> Jason
+Usernames -> Real Name <br />
+Tetriminoss -> Michael Cruz <br />
+ryanRedDragon -> Ryan <br />
+z33ga -> Adel <br />
+yasumami -> Jason <br />
