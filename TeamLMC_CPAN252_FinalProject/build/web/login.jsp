@@ -42,8 +42,6 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span style="color:red"><b><c:out value="${message}"/></b></span>
             </form>
-                <%--<br>
-                <p style="color:red"><b><c:out value="${message}"/></b></p>--%>
                 <br><br>
         </div>
         <div class="col-sm-4">

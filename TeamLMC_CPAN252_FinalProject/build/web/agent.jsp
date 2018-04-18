@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List" %>
 <%@page import="PrintPackage.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,34 +15,31 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-        <title>LOGIN Page</title>
+        <title>Marketing Agent Page</title>
+
     </head>
-    <!--on load make session null-->
     <body>
+        <%--<c:if test="${login.userName == null}">
+            <!--redirect back to login-->
+        </c:if>--%>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
             <br>
             <b>Last Minute Club Printing Company.</b>
         </div>
         <div class="col-sm-4">
         </div>
-        <div class="col-sm-4">
-            <br>
-            <h2>Staff Login:</h2>
-            <br>
-            <form action="login" method="post">
-                <div class="form-group">
-                    <label for="userName">User Name:</label>
-                    <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter User Name">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
-                </div>
-                <button type="submit" value="login" class="btn btn-success">Login</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span style="color:red"><b><c:out value="${message}"/></b></span>
-            </form>
-                <br><br>
+        <div class="col-sm-4" style="text-align: center">
+            <h2><b>Marketing Agent Menu:</b></h2>
+            <c:if test="${login != null}">
+                <h5><b>Username:</b> <c:out value="${login.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${login.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${login.agentId}"/></h5>
+            </c:if>
+                <br>
+            <a href="x" class="btn btn-success btn-lg btn-block">Client Profiles</a>
+            <br><br>          
+            <a href="x" class="btn btn-primary btn-lg btn-block">Place Orders</a>
+            <br><br>          
+            <a href="x" class="btn btn-danger btn-lg btn-block">Return to Login</a>
+            <br><br><br>
         </div>
         <div class="col-sm-4">
         </div>
