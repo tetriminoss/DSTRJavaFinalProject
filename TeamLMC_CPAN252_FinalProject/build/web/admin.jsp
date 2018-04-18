@@ -30,8 +30,11 @@
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4" style="text-align: center">
-            <h2>Administrative Menu for <c:out value="${login.userName}"/>:</h2>
-            <br><br>
+            <h2><b>Administrative Menu:</b></h2>
+            <c:if test="${login != null}">
+                <h5><b>Username:</b> <c:out value="${login.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${login.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${login.agentId}"/></h5>
+            </c:if>
+                <br>
             <a href="list" class="btn btn-success btn-lg btn-block">Locations for Distribution</a>
             <br><br>          
             <a href="listAgents" class="btn btn-primary btn-lg btn-block">Marketing Agents Management</a>
