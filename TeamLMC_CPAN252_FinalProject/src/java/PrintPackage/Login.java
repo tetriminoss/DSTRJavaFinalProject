@@ -14,7 +14,7 @@ public class Login {
     public Login(int id) {
         this.id = id;
     }
-
+    
     public Login(int id, String userName, String password, String role, int agentId) {
         this.id = id;
         this.userName = userName;
@@ -46,11 +46,25 @@ public class Login {
         this.role = role;
     }
 
+    /*public Login(int id, String userName, String password, int agentId) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.agentId = agentId;
+    }*/
+    
     public Login(int id, String userName, String role, int agentId) {
         this.id = id;
         this.userName = userName;
         this.role = role;
         this.agentId = agentId;
+    }
+    
+    public Login(int id, String userName, String password, String role) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
     }
 
     public int getId() {

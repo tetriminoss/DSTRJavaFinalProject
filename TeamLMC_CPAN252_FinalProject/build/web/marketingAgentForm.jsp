@@ -72,7 +72,7 @@
                         <input type="text" class="form-control" id="phoneNo" name="phoneNo" placeholder="Enter Phone Number" value="<c:out value='${marketingAgent.phoneNo}' />">
                     </div>
                     <div class="form-group">
-                        <label for="email">Last Name:</label>
+                        <label for="email">Email:</label>
                         <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="<c:out value='${marketingAgent.email}' />">
                     </div>
                     <button type="submit" value="Save" class="btn btn-primary">Submit</button>

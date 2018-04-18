@@ -15,7 +15,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <title>Add/Update Marketing Agent Page</title>
+        <title>Add/Update User Page</title>
     </head>
     <body>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
@@ -27,9 +27,9 @@
                 <h2>
                     <a href="admin.jsp" class="btn btn-info btn-lg">Admin Home</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="newAgent" class="btn btn-info btn-lg">Add New Agent</a>
+                    <a href="newLogin" class="btn btn-info btn-lg">Add New User</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="listAgents" class="btn btn-info btn-lg">List All Agents</a>
+                    <a href="listLogins" class="btn btn-info btn-lg">List All Users</a>
                 </h2>
             </center>
             <br>
@@ -38,43 +38,54 @@
 
         </div>
         <div class="col-sm-4">
-            <!--if a marketingAgent is passed (as update is selected) then form action is update
-            if marketingAgent is null then it is insert,  also the Edit or add marketingAgent is displayed-->
-            <c:if test="${marketingAgent != null}">
-                <form action="updateAgent" method="post">
+            <!--if a user is passed (as update is selected) then form action is update
+            if user is null then it is insert,  also the Edit or add user is displayed-->
+            <c:if test="${login != null}">
+                <form action="updateLogin" method="post">
                 </c:if>
-                <c:if test="${marketingAgent == null}">
-                    <form action="insertAgent" method="post">
+                <c:if test="${login == null}">
+                    <form action="insertLogin" method="post">
                     </c:if>
 
                     <h2>
-                        <c:if test="${marketingAgent != null}">
-                            Edit Marketing Agent
+                        <c:if test="${login != null}">
+                            Edit User
                         </c:if>
-                        <c:if test="${marketingAgent == null}">
-                            Add New Marketing Agent
+                        <c:if test="${login == null}">
+                            Add New User
                         </c:if>
                     </h2>
                     <br>   
-                    <c:if test="${marketingAgent != null}">
-                        <input type="hidden" name="id" value="<c:out value='${marketingAgent.id}' />" />
+                    <c:if test="${login != null}">
+                        <input type="hidden" name="id" value="<c:out value='${login.id}' />" />
                     </c:if>
                     <div class="form-group">
-                        <label for="firstName">First Name:</label>
-                        <input type="text" class="form-control" id="locationName" name="firstName" placeholder="Enter First Name" value="<c:out value='${marketingAgent.firstName}' />">
+                        <label for="userName">User Name:</label>
+                        <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter User Name" value="<c:out value='${login.userName}' />">
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last Name:</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" value="<c:out value='${marketingAgent.lastName}' />">
+                        <label for="password">Password:</label>
+                        <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password" value="<c:out value='${login.password}' />">
                     </div>
                     <div class="form-group">
-                        <label for="phoneNo">Phone Number:</label>
-                        <input type="text" class="form-control" id="phoneNo" name="phoneNo" placeholder="Enter Phone Number" value="<c:out value='${marketingAgent.phoneNo}' />">
+                        <label for="passwordConfirm">Password confirmation:</label><span style="color:red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+                        <b><c:out value="${messageConfirm}"/></b></span>
+                        <input type="text" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Enter Password Again" value="<c:out value='${login.password}' />">
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="<c:out value='${marketingAgent.email}' />">
+                    <c:if test="${login == null}">
+                    
+                    <div class="col-auto my-1">
+                        <label class="mr-sm-2" for="agentId">Agent ID</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <select class="custom-select mr-sm-2" id="agentId" name="agentId">
+                          <option selected>Choose...</option>
+                          <c:forEach var="marketingAgent" items="${listMarketingAgent}">
+                          <option value="<c:out value="${marketingAgent.id}" />"><c:out value="${marketingAgent.id}" /></option>
+                          </c:forEach>
+                          </select>
                     </div>
+                    <span style="color:red"><b><c:out value="${messageAgentId}"/></b></span>
+                    </c:if>
+                    <br>
                     <button type="submit" value="Save" class="btn btn-primary">Submit</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span style="color:red"><b><c:out value="${message}"/></b></span>

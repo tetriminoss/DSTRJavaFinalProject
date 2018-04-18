@@ -16,16 +16,13 @@
         <title>Error Page</title>
     </head>
     <body>
-    <div class="col-sm-4">
-    </div>
-    <div class="col-sm-4" style="text-align: center; height: 400px; width: 600px; border: black 2px solid; 
-        border-radius: 15px; position: relative; top: 130px;">
+  
+    <div class="col-sm-12" style="text-align: center;">
         <br><br>
         <h1 style="color:red">! ERROR ! ERROR ! ERROR !</h1><br>
         <h1 style="color:red">Error message below:</h1><br>
         <h1><%=exception.getMessage()%></h1>
     </div>
-    <div class="col-sm-4">
-    </div>
+
 </body>
 </html>

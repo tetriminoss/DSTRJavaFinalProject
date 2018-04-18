@@ -41,6 +41,8 @@
             <br><br>          
             <a href="x" class="btn btn-warning btn-lg btn-block">Records Added by Agents</a>
             <br><br>
+            <a href="listLogins" class="btn btn-info btn-lg btn-block">User Data</a>
+            <br><br>
             <a href="x" class="btn btn-danger btn-lg btn-block">Return to Login</a>
             <br><br><br>
         </div>
