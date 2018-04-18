@@ -116,12 +116,23 @@ public class ControllerServlet extends HttpServlet {
 
     private void insertLocationRecord(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-
+        int distributionCapacity;
         String locationName = request.getParameter("locationName");
-        int distributionCapacity = Integer.parseInt(request.getParameter("distributionCapacity"));
-        Location locationObj = new Location(locationName, distributionCapacity);
-        locationDAO.insertLocationRecord(locationObj);
-        response.sendRedirect("list");
+        try {
+            distributionCapacity = Integer.parseInt(request.getParameter("distributionCapacity"));
+        } catch (Exception e) {
+            distributionCapacity = 0;
+        }
+        if (locationName == null || locationName.equals("")/*|| distributionCapacity != (int)distributionCapacity*/) {
+            String message = "please enter a location name";
+            RequestDispatcher rd = request.getRequestDispatcher("locationForm.jsp");
+            request.setAttribute("message", message);
+            rd.forward(request, response);
+        } else {
+            Location locationObj = new Location(locationName, distributionCapacity);
+            locationDAO.insertLocationRecord(locationObj);
+            response.sendRedirect("list");
+        }
     }
 
     private void insertMarketingAgentRecord(HttpServletRequest request, HttpServletResponse response)
@@ -131,9 +142,18 @@ public class ControllerServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String phoneNo = request.getParameter("phoneNo");
         String email = request.getParameter("email");
-        MarketingAgent marketingAgentObj = new MarketingAgent(firstName, lastName, phoneNo, email);
-        marketingAgentDAO.insertMarketingAgentRecord(marketingAgentObj);
-        response.sendRedirect("listAgents");
+
+        if (firstName == null || firstName.equals("") || lastName == null || lastName.equals("") || phoneNo == null || phoneNo.equals("")
+                || email == null || email.equals("")) {
+            String message = "please fully complete form";
+            RequestDispatcher rd = request.getRequestDispatcher("marketingAgentForm.jsp");
+            request.setAttribute("message", message);
+            rd.forward(request, response);
+        } else {
+            MarketingAgent marketingAgentObj = new MarketingAgent(firstName, lastName, phoneNo, email);
+            marketingAgentDAO.insertMarketingAgentRecord(marketingAgentObj);
+            response.sendRedirect("listAgents");
+        }
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
@@ -153,11 +173,11 @@ public class ControllerServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         Login newLogin = locationDAO.doLogin(userName, password);
-        if(newLogin ==  null) {
+        if (newLogin == null) {
             message = "Incorrect Username and/or Password entered";
             request.setAttribute("message", message);
             rd.forward(request, response);
-        }else if (newLogin.role.equalsIgnoreCase("admin")) {
+        } else if (newLogin.role.equalsIgnoreCase("admin")) {
             rd = request.getRequestDispatcher("admin.jsp");
             request.setAttribute("login", newLogin);
             rd.forward(request, response);
@@ -183,24 +203,48 @@ public class ControllerServlet extends HttpServlet {
     }
 
     private void updateLocation(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
-
+            throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
+        int distributionCapacity;
         String locationName = request.getParameter("locationName");
-        int distributionCapacity = Integer.parseInt(request.getParameter("distributionCapacity"));
-        Location location = new Location(id, locationName, distributionCapacity);
-        locationDAO.updateLocation(location);
-        response.sendRedirect("list");
+        try {
+            distributionCapacity = Integer.parseInt(request.getParameter("distributionCapacity"));
+        } catch (Exception e) {
+            distributionCapacity = 0;
+        }
+        if (locationName == null || locationName.equals("")/*|| distributionCapacity != (int)distributionCapacity*/) {
+            String message = "please enter a location name";
+            RequestDispatcher rd = request.getRequestDispatcher("locationForm.jsp");
+            Location existinglocation = locationDAO.getLocation(id);
+            request.setAttribute("message", message);
+            request.setAttribute("location", existinglocation);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("locationForm.jsp");
+            rd.forward(request, response);
+        } else {
+            Location location = new Location(id, locationName, distributionCapacity);
+            locationDAO.updateLocation(location);
+            response.sendRedirect("list");
+        }
     }
 
     private void updateMarketingAgent(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, IOException, ServletException {
 
         int id = Integer.parseInt(request.getParameter("id"));
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String phoneNo = request.getParameter("phoneNo");
         String email = request.getParameter("email");
+
+        if (firstName == null || firstName.equals("") || lastName == null || lastName.equals("") || phoneNo == null || phoneNo.equals("")
+                || email == null || email.equals("")) {
+            String message = "please fully complete form";
+            RequestDispatcher rd = request.getRequestDispatcher("marketingAgentForm.jsp");
+            MarketingAgent marketingAgent = marketingAgentDAO.getMarketingAgent(id);
+            request.setAttribute("message", message);
+            request.setAttribute("marketingAgent", marketingAgent);
+            rd.forward(request, response);
+        }
         MarketingAgent marketingAgentObj = new MarketingAgent(id, firstName, lastName, phoneNo, email);
         marketingAgentDAO.updateMarketingAgent(marketingAgentObj);
         response.sendRedirect("listAgents");

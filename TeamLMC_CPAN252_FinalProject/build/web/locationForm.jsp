@@ -69,6 +69,8 @@
                         <input type="number" class="form-control" id="distributionCapacity" name="distributionCapacity" placeholder="Enter Distribution Capacity" value="<c:out value='${location.distributionCapacity}' />">
                     </div>
                     <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color:red"><b><c:out value="${message}"/></b></span>
                 </form>
                 <br><br>
                 </div>

@@ -39,9 +39,12 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                 </div>
                 <button type="submit" value="login" class="btn btn-success">Login</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="color:red"><b><c:out value="${message}"/></b></span>
             </form>
-            <br>
-            <p style="color:red"><b><c:out value="${message}"/></b></p>
+                <%--<br>
+                <p style="color:red"><b><c:out value="${message}"/></b></p>--%>
+                <br><br>
         </div>
         <div class="col-sm-4">
         </div>

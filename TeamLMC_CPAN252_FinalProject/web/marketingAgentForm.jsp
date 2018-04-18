@@ -76,6 +76,8 @@
                         <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="<c:out value='${marketingAgent.email}' />">
                     </div>
                     <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color:red"><b><c:out value="${message}"/></b></span>
                 </form>
                 <br><br>
                 </div>
