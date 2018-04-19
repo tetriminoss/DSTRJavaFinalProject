@@ -99,7 +99,7 @@ public class ControllerServlet extends HttpServlet {
                     break;
                 default:
                     //request.getSession().invalidate();
-                    response.sendRedirect("login.jsp");
+                    response.sendRedirect("/TeamLMC_CPAN252_FinalProject/login.jsp");
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -250,6 +250,8 @@ public class ControllerServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         Login newLogin = loginDAO.doLogin(userName, password);
+        HttpSession session = request.getSession();  
+        session.setAttribute("newLogin",newLogin); 
         /*session = request.getSession();
         session.setAttribute("user", newLogin);
         if(session.getAttribute("user") == null){

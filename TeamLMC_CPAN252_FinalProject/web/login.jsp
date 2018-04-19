@@ -17,7 +17,9 @@
 
         <title>LOGIN Page</title>
     </head>
-    <!--on load make session null-->
+    <%
+      request.getSession().invalidate();  
+    %>
     <body>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
             <br>

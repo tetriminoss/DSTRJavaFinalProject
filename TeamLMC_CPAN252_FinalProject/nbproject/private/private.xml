@@ -7,15 +7,18 @@
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/error.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/admin.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/src/java/PrintPackage/Login.java</file>
-            <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/printLogo.jpg</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/marketingAgentForm.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/src/java/PrintPackage/ControllerServlet.java</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/src/java/PrintPackage/LocationDAO.java</file>
+            <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/loginList.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/locationForm.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/locationList.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/marketingAgentList.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/WEB-INF/web.xml</file>
+            <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/agent.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/src/java/PrintPackage/Location.java</file>
+            <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/src/java/PrintPackage/LoginDAO.java</file>
+            <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/web/loginForm.jsp</file>
             <file>file:/D:/NetbeansProjects/TeamLMC_CPAN252_FinalProject/src/java/PrintPackage/MarketingAgentDAO.java</file>
         </group>
     </open-files>

@@ -1,6 +1,11 @@
+<%@page import="java.io.IOException"%>
+<%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List" %>
 <%@page import="PrintPackage.*" %>
+<%@page import="javax.servlet.http.HttpServlet"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
+<%@page import="javax.servlet.http.HttpServletResponse"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -19,9 +24,16 @@
 
     </head>
     <body>
-        <%--<c:if test="${login.userName == null}">
-            <!--redirect back to login-->
-        </c:if>--%>
+        <% 
+        session=request.getSession(false);  
+        if(session!=null){  
+        Login newLogin = (Login)session.getAttribute("newLogin");
+        }else{
+            response.sendRedirect("login.jsp");
+            //RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            //rd.forward(request, response);
+        }
+        %>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
             <br>
             <b>Last Minute Club Printing Company.</b>
@@ -30,8 +42,8 @@
         </div>
         <div class="col-sm-4" style="text-align: center">
             <h2><b>Marketing Agent Menu:</b></h2>
-            <c:if test="${login != null}">
-                <h5><b>Username:</b> <c:out value="${login.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${login.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${login.agentId}"/></h5>
+            <c:if test="${newLogin != null}">
+                <h5><b>Username:</b> <c:out value="${newLogin.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${newLogin.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${newLogin.agentId}"/></h5>
             </c:if>
                 <br>
             <a href="x" class="btn btn-success btn-lg btn-block">Client Profiles</a>
