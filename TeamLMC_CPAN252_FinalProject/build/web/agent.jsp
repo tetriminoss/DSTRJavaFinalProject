@@ -1,11 +1,6 @@
-<%@page import="java.io.IOException"%>
-<%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List" %>
 <%@page import="PrintPackage.*" %>
-<%@page import="javax.servlet.http.HttpServlet"%>
-<%@page import="javax.servlet.http.HttpServletRequest"%>
-<%@page import="javax.servlet.http.HttpServletResponse"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -26,13 +21,7 @@
     <body>
         <% 
         session=request.getSession(false);  
-        if(session!=null){  
         Login newLogin = (Login)session.getAttribute("newLogin");
-        }else{
-            response.sendRedirect("login.jsp");
-            //RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            //rd.forward(request, response);
-        }
         %>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
             <br>

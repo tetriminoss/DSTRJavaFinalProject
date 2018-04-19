@@ -2,6 +2,7 @@
 <%@page import="java.util.List" %>
 <%@page import="PrintPackage.*" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,16 +19,10 @@
         <title>Admin Page</title>
     </head>
     <body>
-        <% 
-        session=request.getSession(false);  
-        if(session!=null){  
-        Login newLogin = (Login)session.getAttribute("newLogin");
-        }else{
-            response.sendRedirect("login.jsp");
-            //RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            //rd.forward(request, response);
-        }
-        %>
+    <%  
+        session = request.getSession(false); 
+        Login newLogin = (Login)session.getAttribute("newLogin"); 
+    %>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
             <br>
             <b>Last Minute Club Printing Company.</b>
