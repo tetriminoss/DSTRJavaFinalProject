@@ -42,151 +42,151 @@ public class ControllerServlet extends HttpServlet {
         try {
             switch (action) {
                 case "/new":
-                    session=request.getSession(false);  
-                    if(session!=null){ 
-                    showNewLocationForm(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        showNewLocationForm(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/insert":
-                    session=request.getSession(false);  
-                    if(session!=null){ 
-                    insertLocationRecord(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        insertLocationRecord(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/delete":
-                    session=request.getSession(false);  
-                    if(session!=null){ 
-                    deleteLocation(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        deleteLocation(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/edit":
-                    session=request.getSession(false);  
-                    if(session!=null){ 
-                    showEditForm(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        showEditForm(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/update":
-                    session=request.getSession(false);  
-                    if(session!=null){ 
-                    updateLocation(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        updateLocation(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/updateLogin":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    updateLogin(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        updateLogin(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/newLogin":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    showNewLoginForm(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        showNewLoginForm(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/newAgent":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    showNewMarketingAgentForm(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        showNewMarketingAgentForm(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/insertAgent":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    insertMarketingAgentRecord(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        insertMarketingAgentRecord(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/insertLogin":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    insertLoginRecord(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        insertLoginRecord(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/deleteAgent":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    deleteMarketingAgent(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        deleteMarketingAgent(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/deleteLogin":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    deleteLogin(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        deleteLogin(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/editAgent":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    showMarketingAgentEditForm(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        showMarketingAgentEditForm(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/editLogin":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    showLoginEditForm(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        showLoginEditForm(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/updateAgent":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    updateMarketingAgent(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        updateMarketingAgent(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/list":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    listAllLocations(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        listAllLocations(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/listAgents":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    listAllMarketingAgents(request, response);
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        listAllMarketingAgents(request, response);
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 case "/login":
                     login(request, response);
                     break;
                 case "/listLogins":
-                    session=request.getSession(false);  
-                    if(session!=null){  
-                    listAllLogins(request, response);
-                    //Login newLogin = (Login)session.getAttribute("newLogin");
-                    }else{
-                    response.sendRedirect("login.jsp");
+                    session = request.getSession(false);
+                    if (session != null) {
+                        listAllLogins(request, response);
+                        //Login newLogin = (Login)session.getAttribute("newLogin");
+                    } else {
+                        response.sendRedirect("login.jsp");
                     }
                     break;
                 default:
@@ -206,7 +206,7 @@ public class ControllerServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("locationList.jsp");
         dispatcher.forward(request, response);
     }
-    
+
     private void listAllLogins(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 
@@ -231,7 +231,7 @@ public class ControllerServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("locationForm.jsp");
         dispatcher.forward(request, response);
     }
-    
+
     private void showNewLoginForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 
@@ -268,7 +268,7 @@ public class ControllerServlet extends HttpServlet {
             response.sendRedirect("list");
         }
     }
-    
+
     private void insertMarketingAgentRecord(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 
@@ -289,30 +289,31 @@ public class ControllerServlet extends HttpServlet {
             response.sendRedirect("listAgents");
         }
     }
-    
+
     private void insertLoginRecord(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String passwordConfirm = request.getParameter("passwordConfirm");
-        int agentId = 0;
-        agentId = Integer.parseInt(request.getParameter("agentId"));
+        String agentIdStr = request.getParameter("agentId");
         
-        if (agentId == 0){
+        if (agentIdStr.equals("Choose...") || agentIdStr == null || agentIdStr.equals("")) {
             String messageAgentId = "please select an agent ID";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
             request.setAttribute("messageAgentId", messageAgentId);
             rd.forward(request, response);
         }
-        
-        if(!password.equals(passwordConfirm)){
+                
+        int agentId = Integer.parseInt(request.getParameter("agentId"));
+
+        if (!password.equals(passwordConfirm)) {
             String messageConfirm = "please enter identical passwords";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
             request.setAttribute("messageConfirm", messageConfirm);
             rd.forward(request, response);
         }
-        
+
         if (userName == null || userName.equals("") || password == null || password.equals("")) {
             String message = "please enter User Name";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
@@ -342,8 +343,8 @@ public class ControllerServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         Login newLogin = loginDAO.doLogin(userName, password);
-        HttpSession session = request.getSession();  
-        session.setAttribute("newLogin",newLogin); 
+        HttpSession session = request.getSession();
+        session.setAttribute("newLogin", newLogin);
         /*session = request.getSession();
         session.setAttribute("user", newLogin);
         if(session.getAttribute("user") == null){
@@ -377,10 +378,10 @@ public class ControllerServlet extends HttpServlet {
         request.setAttribute("marketingAgent", existingMarketingAgent);
         dispatcher.forward(request, response);
     }
-    
+
     private void showLoginEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
-        
+
         int id = Integer.parseInt(request.getParameter("id"));
         Login existingLogin = loginDAO.getLogin(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.jsp");
@@ -411,7 +412,7 @@ public class ControllerServlet extends HttpServlet {
             response.sendRedirect("list");
         }
     }
-    
+
     private void updateLogin(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 
@@ -421,14 +422,14 @@ public class ControllerServlet extends HttpServlet {
         //String role = request.getParameter("role");
         //int agentId = Integer.parseInt(request.getParameter("agentId"));
         String passwordConfirm = request.getParameter("passwordConfirm");
-        
-        if(!password.equals(passwordConfirm)){
+
+        if (!password.equals(passwordConfirm)) {
             String messageConfirm = "please enter identical passwords";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
             request.setAttribute("messageConfirm", messageConfirm);
             rd.forward(request, response);
         }
-        
+
         if (userName == null || userName.equals("") || password == null || password.equals("")) {
             String message = "please fully complete form";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
@@ -482,7 +483,7 @@ public class ControllerServlet extends HttpServlet {
         loginDAO.deleteLogin(loginObj);
         response.sendRedirect("listLogins");
     }
-    
+
     private void deleteMarketingAgent(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
 

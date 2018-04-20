@@ -30,11 +30,12 @@
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4" style="text-align: center">
+            <hr style="border-width: 2px;">
             <h2><b>Marketing Agent Menu:</b></h2>
             <c:if test="${newLogin != null}">
                 <h5><b>Username:</b> <c:out value="${newLogin.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${newLogin.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${newLogin.agentId}"/></h5>
             </c:if>
-                <br>
+            <hr style="border-width: 2px;">
             <a href="x" class="btn btn-success btn-lg btn-block">Client Profiles</a>
             <br><br>          
             <a href="x" class="btn btn-primary btn-lg btn-block">Place Orders</a>

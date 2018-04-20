@@ -28,21 +28,24 @@
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4">
-            <br>
-            <h2>Staff Login:</h2>
-            <br>
+            <hr style="border-width: 2px">
+            <center><h2>Staff Login:</h2></center>
+            <hr style="border-width: 2px;">
             <form action="login" method="post">
-                <div class="form-group">
-                    <label for="userName">User Name:</label>
+                <div class="form-group form-group-lg">
+                    <!--<label for="userName" style="font-size: 1.2em">User Name:</label>-->
                     <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter User Name">
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
+                <div class="form-group form-group-lg">
+                    <!--<label for="password" style="font-size: 1.2em">Password:</label>-->
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
                 </div>
-                <button type="submit" value="login" class="btn btn-success">Login</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span style="color:red"><b><c:out value="${message}"/></b></span>
+                <br>
+                <button type="submit" value="login" class="btn btn-primary btn-lg btn-block">Login</button>
+                <br>
+                <center>
+                <span style="color:red; font-size: 1.2em"><b><c:out value="${message}"/></b></span>
+                </center>
             </form>
                 <br><br>
         </div>
