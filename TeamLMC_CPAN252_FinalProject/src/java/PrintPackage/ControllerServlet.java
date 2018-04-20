@@ -436,19 +436,18 @@ public class ControllerServlet extends HttpServlet {
             request.setAttribute("login", existingLogin);
             request.setAttribute("messageConfirm", messageConfirm);
             rd.forward(request, response);
-        }
-
-        if (userName == null || userName.equals("") || password == null || password.equals("")) {
+        }else if (userName == null || userName.equals("") || password == null || password.equals("")) {
             String message = "please fully complete form";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
             Login existingLogin = loginDAO.getLogin(id);
             request.setAttribute("message", message);
             request.setAttribute("login", existingLogin);
             rd.forward(request, response);
-        }
+        }else{
         Login loginObj = new Login(id, userName, password, "agent");
         loginDAO.updateLogin(loginObj);
         response.sendRedirect("listLogins");
+        }
     }
 
     private void updateMarketingAgent(HttpServletRequest request, HttpServletResponse response)
@@ -468,10 +467,11 @@ public class ControllerServlet extends HttpServlet {
             request.setAttribute("message", message);
             request.setAttribute("marketingAgent", marketingAgent);
             rd.forward(request, response);
-        }
+        }else{
         MarketingAgent marketingAgentObj = new MarketingAgent(id, firstName, lastName, phoneNo, email);
         marketingAgentDAO.updateMarketingAgent(marketingAgentObj);
         response.sendRedirect("listAgents");
+        }
     }
 
     private void deleteLocation(HttpServletRequest request, HttpServletResponse response)
