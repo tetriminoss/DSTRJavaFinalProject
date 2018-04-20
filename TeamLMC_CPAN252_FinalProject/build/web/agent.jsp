@@ -38,7 +38,7 @@
             <hr style="border-width: 2px;">
             <a href="x" class="btn btn-success btn-lg btn-block">Client Profiles</a>
             <br><br>          
-            <a href="x" class="btn btn-primary btn-lg btn-block">Place Orders</a>
+            <a href="listOrder" class="btn btn-primary btn-lg btn-block">Place Orders</a>
             <br><br>          
             <a href="x" class="btn btn-danger btn-lg btn-block">Return to Login</a>
             <br><br><br>

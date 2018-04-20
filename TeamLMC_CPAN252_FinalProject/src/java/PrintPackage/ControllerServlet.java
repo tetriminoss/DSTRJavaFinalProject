@@ -15,6 +15,7 @@ public class ControllerServlet extends HttpServlet {
     LocationDAO locationDAO;
     MarketingAgentDAO marketingAgentDAO;
     LoginDAO loginDAO;
+    OrderDAO orderDAO;
     HttpSession session;
 
     public void init() {
@@ -25,6 +26,7 @@ public class ControllerServlet extends HttpServlet {
         locationDAO = new LocationDAO(jdbcURL, jdbcUsername, jdbcPassword);
         marketingAgentDAO = new MarketingAgentDAO(jdbcURL, jdbcUsername, jdbcPassword);
         loginDAO = new LoginDAO(jdbcURL, jdbcUsername, jdbcPassword);
+        orderDAO = new OrderDAO(jdbcURL, jdbcUsername, jdbcPassword);
 
     }
 
@@ -189,6 +191,23 @@ public class ControllerServlet extends HttpServlet {
                         response.sendRedirect("login.jsp");
                     }
                     break;
+                case "/newOrder":
+                    session = request.getSession(false);
+                    if(session != null){
+                        showNewOrderForm(request, response);
+                    }
+                    else{
+                        response.sendRedirect("login.jsp");
+                    }
+                    break;
+                case "/listOrder":
+                    session = request.getSession(false);
+                    if(session != null){
+                        listAllOrders(request, response);
+                    }
+                    else{
+                        response.sendRedirect("login.jsp");
+                    }
                 default:
                     request.getSession().invalidate();
                     response.sendRedirect("/TeamLMC_CPAN252_FinalProject/login.jsp");
@@ -224,6 +243,14 @@ public class ControllerServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("marketingAgentList.jsp");
         dispatcher.forward(request, response);
     }
+    
+    private void listAllOrders(HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, IOException, ServletException {
+        List<Order> listOrder = orderDAO.listAllOrders();
+        request.setAttribute("listOrder", listOrder);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("orderList.jsp");
+        dispatcher.forward(request, response);
+    }
 
     private void showNewLocationForm(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
@@ -245,6 +272,12 @@ public class ControllerServlet extends HttpServlet {
             throws IOException, ServletException {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("marketingAgentForm.jsp");
+        dispatcher.forward(request, response);
+    }
+    
+    private void showNewOrderForm(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("orderForm.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -43,43 +43,43 @@
             if location is null then it is insert,  also the Edit or add location is displayed-->
             <c:if test="${location != null}">
                 <form action="update" method="post">
+            </c:if>
+            <c:if test="${location == null}">
+                <form action="insert" method="post">
                 </c:if>
-                <c:if test="${location == null}">
-                    <form action="insert" method="post">
-                    </c:if>
 
-                    <h2>
-                        <c:if test="${location != null}">
-                            Edit Location
-                        </c:if>
-                        <c:if test="${location == null}">
-                            Add New Location
-                        </c:if>
-                    </h2>
-                    <br>   
+                <h2>
                     <c:if test="${location != null}">
-                        <input type="hidden" name="id" value="<c:out value='${location.id}' />" />
+                        Edit Location
                     </c:if>
-                    <div class="form-group">
-                        <label for="locationName">Location Name:</label>
-                        <input type="text" class="form-control" id="locationName" name="locationName" placeholder="Enter Location Name" value="<c:out value='${location.locationName}' />">
-                    </div>
-                    <div class="form-group">
-                        <label for="distributionCapacity">Distribution Capacity:</label>
-                        <input type="number" class="form-control" id="distributionCapacity" name="distributionCapacity" placeholder="Enter Distribution Capacity" value="<c:out value='${location.distributionCapacity}' />">
-                    </div>
-                    <button type="submit" value="Save" class="btn btn-primary">Submit</button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span style="color:red"><b><c:out value="${message}"/></b></span>
-                </form>
-                <br><br>
+                    <c:if test="${location == null}">
+                        Add New Location
+                    </c:if>
+                </h2>
+                <br>   
+                <c:if test="${location != null}">
+                    <input type="hidden" name="id" value="<c:out value='${location.id}' />" />
+                </c:if>
+                <div class="form-group">
+                    <label for="locationName">Location Name:</label>
+                    <input type="text" class="form-control" id="locationName" name="locationName" placeholder="Enter Location Name" value="<c:out value='${location.locationName}' />">
                 </div>
-                <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="distributionCapacity">Distribution Capacity:</label>
+                    <input type="number" class="form-control" id="distributionCapacity" name="distributionCapacity" placeholder="Enter Distribution Capacity" value="<c:out value='${location.distributionCapacity}' />">
+                </div>
+                <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="color:red"><b><c:out value="${message}"/></b></span>
+            </form>
+            <br><br>
+        </div>
+        <div class="col-sm-4">
 
-                </div>
-                <div class="col-sm-12" style="height:120px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 1.9em; color: white">
-                    <br>
-                    &COPY;2018 LMC ltd.
-                </div>        
-                </body>
-                </html>
+        </div>
+        <div class="col-sm-12" style="height:120px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 1.9em; color: white">
+            <br>
+            &COPY;2018 LMC ltd.
+        </div>        
+    </body>
+</html>

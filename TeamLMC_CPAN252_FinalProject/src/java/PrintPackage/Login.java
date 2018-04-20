@@ -6,7 +6,7 @@ public class Login {
     
     int id;
     String userName, password, role;
-    int agentId;;
+    int agentId;
 
     public Login() {
     }
