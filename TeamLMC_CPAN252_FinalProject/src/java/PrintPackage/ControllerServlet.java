@@ -301,6 +301,8 @@ public class ControllerServlet extends HttpServlet {
         if (agentIdStr.equals("Choose...") || agentIdStr == null || agentIdStr.equals("")) {
             String messageAgentId = "please select an agent ID";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
+            List<MarketingAgent> listMarketingAgent = marketingAgentDAO.listAllMarketingAgents();
+            request.setAttribute("listMarketingAgent", listMarketingAgent);
             request.setAttribute("messageAgentId", messageAgentId);
             rd.forward(request, response);
         }
@@ -310,6 +312,8 @@ public class ControllerServlet extends HttpServlet {
         if (!password.equals(passwordConfirm)) {
             String messageConfirm = "please enter identical passwords";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
+            List<MarketingAgent> listMarketingAgent = marketingAgentDAO.listAllMarketingAgents();
+            request.setAttribute("listMarketingAgent", listMarketingAgent);
             request.setAttribute("messageConfirm", messageConfirm);
             rd.forward(request, response);
         }
@@ -317,6 +321,8 @@ public class ControllerServlet extends HttpServlet {
         if (userName == null || userName.equals("") || password == null || password.equals("")) {
             String message = "please enter User Name";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
+            List<MarketingAgent> listMarketingAgent = marketingAgentDAO.listAllMarketingAgents();
+            request.setAttribute("listMarketingAgent", listMarketingAgent);
             request.setAttribute("message", message);
             rd.forward(request, response);
         } else {
@@ -425,7 +431,9 @@ public class ControllerServlet extends HttpServlet {
 
         if (!password.equals(passwordConfirm)) {
             String messageConfirm = "please enter identical passwords";
+            Login existingLogin = loginDAO.getLogin(id);     
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
+            request.setAttribute("login", existingLogin);
             request.setAttribute("messageConfirm", messageConfirm);
             rd.forward(request, response);
         }
@@ -433,9 +441,9 @@ public class ControllerServlet extends HttpServlet {
         if (userName == null || userName.equals("") || password == null || password.equals("")) {
             String message = "please fully complete form";
             RequestDispatcher rd = request.getRequestDispatcher("loginForm.jsp");
-            Login login = loginDAO.getLogin(id);
+            Login existingLogin = loginDAO.getLogin(id);
             request.setAttribute("message", message);
-            request.setAttribute("login", login);
+            request.setAttribute("login", existingLogin);
             rd.forward(request, response);
         }
         Login loginObj = new Login(id, userName, password, "agent");
