@@ -208,6 +208,7 @@ public class ControllerServlet extends HttpServlet {
                     else{
                         response.sendRedirect("login.jsp");
                     }
+                    break;
                 default:
                     request.getSession().invalidate();
                     response.sendRedirect("/TeamLMC_CPAN252_FinalProject/login.jsp");

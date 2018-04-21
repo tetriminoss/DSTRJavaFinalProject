@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List" %>
 <%@page import="PrintPackage.*" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +41,7 @@
         </div>
         <div class="col-sm-8">
             <table class="table table-bordered table-striped">
-                <caption><h2>List of Locations</h2></caption>
+                <caption><h2>List of Orders</h2></caption>
                 <thead>
                     <tr class="info">
                         <th>ID</th>
