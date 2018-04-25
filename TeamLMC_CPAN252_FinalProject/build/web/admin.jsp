@@ -27,28 +27,51 @@
             <br>
             <b>Last Minute Club Printing Company.</b>
         </div>
-        <div class="col-sm-4">
+        <!-- following sections will be depending on the situation
+                        if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
+                        if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
+                        you will be able to see what will be set by looking at the name of the variable.-->
+        <div class="row">
+            <div class="col-sm-4">
+                <br><br><br><br>
+            </div>
+            <div class="col-sm-4" style="text-align: center">
+                <hr style="border-width: 2px;">
+                <h2><b>Administrative Menu:</b></h2>
+                <c:if test="${newLogin != null}">
+                    <h5><b>Username:</b> <c:out value="${newLogin.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${newLogin.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${newLogin.agentId}"/></h5>
+                </c:if>
+                <hr style="border-width: 2px;">
+            </div>
+            <div class="col-sm-4">
+                <br><br><br><br>
+            </div>
         </div>
-        <div class="col-sm-4" style="text-align: center">
-            <hr style="border-width: 2px;">
-            <h2><b>Administrative Menu:</b></h2>
-            <c:if test="${newLogin != null}">
-                <h5><b>Username:</b> <c:out value="${newLogin.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${newLogin.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${newLogin.agentId}"/></h5>
-            </c:if>
-            <hr style="border-width: 2px;">
-            <a href="list" class="btn btn-success btn-lg btn-block">Locations for Distribution</a>
-            <br><br>          
-            <a href="listAgents" class="btn btn-primary btn-lg btn-block">Marketing Agents Management</a>
-            <br><br>          
-            <a href="x" class="btn btn-warning btn-lg btn-block">Records Added by Agents</a>
-            <br><br>
-            <a href="listLogins" class="btn btn-info btn-lg btn-block">User Data</a>
-            <br><br>
-            <a href="x" class="btn btn-danger btn-lg btn-block">Return to Login</a>
-            <br><br><br>
-        </div>
-        <div class="col-sm-4">
-        </div>
+        <div class="row">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-4">
+                <a href="list" class="btn btn-info btn-lg btn-block">Locations for Distribution</a>
+                <br><br>          
+                <a href="listAgents" class="btn btn-primary btn-lg btn-block">Marketing Agents Management</a>
+                <br><br>
+                <a href="listLogins" class="btn btn-info btn-lg btn-block">User Data</a>
+                <br><br>
+                <a href="x" class="btn btn-danger btn-lg btn-block">Logout</a>
+            </div>
+            <div class="col-sm-4">
+                <a href="approvedOrdersList" class="btn btn-primary btn-lg btn-block">View All Orders</a>
+                <br><br>
+                <a href="noPayOrdersList" class="btn btn-info btn-lg btn-block">View Orders with No Payment Received</a>
+                <br><br>    
+                <a href="listAllNoPayClients" class="btn btn-primary btn-lg btn-block">View Clients with No Payment Received</a>
+                <br><br>  
+                <a href="adminList" class="btn btn-info btn-lg btn-block">Records Added by Agents</a>
+            </div>
+            <div class="col-sm-2">
+            </div>
+        </div> 
+        <br><br>
         <div class="col-sm-12" style="height:120px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 1.9em; color: white">
             <br>
             &COPY;2018 LMC ltd.

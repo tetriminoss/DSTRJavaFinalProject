@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List" %>
+<%@page import="PrintPackage.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -18,6 +20,10 @@
         <title>Add/Update User Page</title>
     </head>
     <body>
+        <% 
+        session=request.getSession(false);  
+        Login newLogin = (Login)session.getAttribute("newLogin");
+        %>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
             <br>
             <b>Last Minute Club Printing Company.</b>
@@ -34,6 +40,13 @@
             </center>
             <br>
         </div>
+        <!-- following sections will be depending on the situation
+                        if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
+                        if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
+                        you will be able to see what will be set by looking at the name of the variable.-->
+        <c:if test="${newLogin != null}">
+            <input type="hidden" value="<c:out value='${newLogin.agentId}'/>">
+        </c:if>
         <div class="col-sm-4">
 
         </div>
@@ -79,7 +92,7 @@
                         <select class="custom-select mr-sm-2" id="agentId" name="agentId">
                           <option selected>Choose...</option>
                           <c:forEach var="marketingAgent" items="${listMarketingAgent}">
-                          <option value="<c:out value="${marketingAgent.id}" />"><c:out value="${marketingAgent.id}" /></option>
+                          <option value="<c:out value="${marketingAgent.id}" />"><c:out value="${marketingAgent.firstName}" /> <c:out value="${marketingAgent.lastName}" /></option>
                           </c:forEach>
                           </select>
                     </div>
@@ -90,7 +103,9 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span style="color:red"><b><c:out value="${message}"/></b></span>
                 </form>
-                <br><br>
+                <br>
+                <span style="color:red"><b><c:out value="${errorMessage}"/></b></span>
+                <br>
                 </div>
                 <div class="col-sm-4">
 

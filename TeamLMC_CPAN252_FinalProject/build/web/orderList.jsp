@@ -36,10 +36,7 @@
             </center>
             <br>
         </div>
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-8">
+        <div class="col-sm-12">
             <table class="table table-bordered table-striped">
                 <caption><h2>List of Orders</h2></caption>
                 <thead>
@@ -59,6 +56,10 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                <!-- following sections will be depending on the situation
+                        if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
+                        if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
+                        you will be able to see what will be set by looking at the name of the variable.-->
                 <tbody>
                     <c:forEach var="order" items="${listOrder}">
                         <tr>
@@ -67,23 +68,43 @@
                             <td><c:out value="${order.clientID}" /></td>
                             <td><c:out value="${order.flyerQTY}" /></td>
                             <td><c:out value="${order.flyerLayout}" /></td>
-                            <td><c:out value="${order.flyerImage}" /></td>
+                            <td><c:out value="${order.flyerImg}" /></td>
                             <td><c:out value="${order.personalCopy}" /></td>
                             <td><c:out value="${order.paymentInfo}" /></td>
                             <td><c:out value="${order.invoiceNum}" /></td>
                             <td><c:out value="${order.comments}" /></td>
-                            <td><c:out value="${order.isFlyerArtApproved}" /></td>
-                            <td><c:out value="${order.isPaymentReceived}" /></td>
+                            <c:choose>
+                                <c:when test="${order.isFlyerArtApproved == 0}">
+                                    <c:set var="artApprove" value="${'no'}"/>
+                                </c:when>
+                                <c:when test="${order.isFlyerArtApproved != 0}">
+                                    <c:set var="artApprove" value="${'yes'}"/>
+                                </c:when>
+                           </c:choose>
+                            <td><c:out value="${artApprove}" /></td>
+                            <c:choose>
+                                <c:when test="${order.isPaymentReceived == 0}">
+                                    <c:set var="payRec" value="${'no'}"/>
+                                </c:when>
+                                <c:when test="${order.isPaymentReceived != 0}">
+                                    <c:set var="payRec" value="${'yes'}"/>
+                                </c:when>
+                           </c:choose>
+                            <td><c:out value="${payRec}" /></td>
                             <td>
-                                <a href="edit?id=<c:out value='${order.id}' />" class="btn btn-success btn-xs">Edit</a>
+                                <a href="editOrder?id=<c:out value='${order.id}' />" class="btn btn-success btn-xs">Edit</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="delete?id=<c:out value='${order.id}' />" class="btn btn-danger btn-xs">Delete</a>                     
+                                <a href="deleteOrder?id=<c:out value='${order.id}' />" class="btn btn-danger btn-xs">Delete</a>                     
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
+
+        </div>
+        <div class="col-sm-12" style="height:120px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 1.9em; color: white">
             <br>
+            &COPY;2018 LMC ltd.
         </div>
     </body>
 </html>

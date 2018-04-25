@@ -5,14 +5,16 @@
  */
 package PrintPackage;
 
-/**
- *
- * @author Jason
- */
+import java.util.Random;
+
 public class Order {
+    //this will be the same for other java classes (entities)
+    //make variables
+    //make a constructor, varies from what values are coming in then storing it.
+    //afterwards, there will be a set of getters and setters that are used for servlet methods that need these values
     private int id, flyerQTY, personalCopy;
     private String flyerLayout, paymentInfo, comments, invoiceNum, flyerImg;
-    private boolean isFlyerArtApproved, isPaymentReceived = false;
+    private int isFlyerArtApproved, isPaymentReceived;
     private int agentID, clientID;
     
     public Order(){
@@ -23,9 +25,13 @@ public class Order {
         this.id = id;
     }
     
+    public Order(String invoiceNum){
+        this.invoiceNum = invoiceNum;
+    }
+    
     public Order(int id, int flyerQTY, String flyerLayout, String flyerImg, int personalCopy, 
-            String paymentInfo, String invoice, String comments, boolean flyerApproved, 
-            boolean paymentReceived, int agentID, int clientID){
+            String paymentInfo, String invoice, String comments, int flyerApproved, 
+            int paymentReceived, int agentID, int clientID){
         this.id = id;
         this.flyerQTY = flyerQTY;
         this.flyerLayout = flyerLayout;
@@ -47,8 +53,8 @@ public class Order {
     }
     
     public Order(int flyerQTY, String flyerLayout, String flyerImg, int personalCopy, 
-            String paymentInfo, String invoice, String comments, boolean flyerApproved, 
-            boolean paymentReceived){
+            String paymentInfo, String invoice, String comments, int flyerApproved, 
+            int paymentReceived){
         this.flyerQTY = flyerQTY;
         this.flyerLayout = flyerLayout;
         this.flyerImg = flyerImg;
@@ -58,6 +64,34 @@ public class Order {
         this.comments = comments;
         this.isFlyerArtApproved = flyerApproved;
         this.isPaymentReceived = paymentReceived;
+    }
+    
+    public Order(int agentID,int clientID,int flyerQTY, String flyerLayout, String flyerImg, int personalCopy, 
+            String paymentInfo, String invoice, String comments){
+        this.flyerQTY = flyerQTY;
+        this.flyerLayout = flyerLayout;
+        this.flyerImg = flyerImg;
+        this.personalCopy = personalCopy;
+        this.paymentInfo = paymentInfo;
+        this.invoiceNum = invoice;
+        this.comments = comments;
+        this.clientID = clientID;
+        this.agentID = agentID;
+    }
+    
+    public Order(int agentID,int clientID,int flyerQTY, String flyerLayout, String flyerImg, int personalCopy, 
+            String paymentInfo, String invoice, String comments, int isApproved, int isPaid){
+        this.flyerQTY = flyerQTY;
+        this.flyerLayout = flyerLayout;
+        this.flyerImg = flyerImg;
+        this.personalCopy = personalCopy;
+        this.paymentInfo = paymentInfo;
+        this.invoiceNum = invoice;
+        this.comments = comments;
+        this.clientID = clientID;
+        this.agentID = agentID;
+        this.isFlyerArtApproved = isApproved;
+        this.isPaymentReceived = isPaid;
     }
 
     public int getId() {
@@ -124,19 +158,19 @@ public class Order {
         this.flyerImg = flyerImg;
     }
 
-    public boolean isIsFlyerArtApproved() {
+    public int getIsFlyerArtApproved() {
         return isFlyerArtApproved;
     }
 
-    public void setIsFlyerArtApproved(boolean isFlyerArtApproved) {
+    public void setIsFlyerArtApproved(int isFlyerArtApproved) {
         this.isFlyerArtApproved = isFlyerArtApproved;
     }
 
-    public boolean isIsPaymentReceived() {
+    public int getIsPaymentReceived() {
         return isPaymentReceived;
     }
 
-    public void setIsPaymentReceived(boolean isPaymentReceived) {
+    public void setIsPaymentReceived(int isPaymentReceived) {
         this.isPaymentReceived = isPaymentReceived;
     }
 

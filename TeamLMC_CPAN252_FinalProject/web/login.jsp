@@ -31,6 +31,10 @@
             <hr style="border-width: 2px">
             <center><h2>Staff Login:</h2></center>
             <hr style="border-width: 2px;">
+            <!-- following sections will be depending on the situation
+                        if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
+                        if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
+                        you will be able to see what will be set by looking at the name of the variable.-->
             <form action="login" method="post">
                 <div class="form-group form-group-lg">
                     <!--<label for="userName" style="font-size: 1.2em">User Name:</label>-->

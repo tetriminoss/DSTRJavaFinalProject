@@ -15,7 +15,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-        <title>Locations List Page</title>
+        <title>Clients List Page</title>
 
         <!--<base href="TeamLMC_CPAN252_FinalProject/" >-->
     </head>
@@ -29,26 +29,31 @@
                 <h2>
                     <a href="admin.jsp" class="btn btn-info btn-lg">Admin Home</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="newAgent" class="btn btn-info btn-lg">Add New Agent</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="listAgents" class="btn btn-info btn-lg">List All Agents</a>
+                    <a href="adminList" class="btn btn-info btn-lg">List All Clients</a>
                 </h2>
             </center>
             <br>
         </div>
-        <div class="col-sm-2">
-
-        </div>
-        <div class="col-sm-8">
+     
+        <div class="col-sm-12">
             <table class="table table-bordered table-striped">
-                <caption><h2>List of Marketing Agents</h2></caption>
+                <caption><h2>List of Clients</h2></caption>
                 <thead>
                     <tr class="info">
                         <th>ID</th>
+                        <th>Agent ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Phone Number</th>
+                        <th>Street #</th>
+                        <th>Street Name</th>
+                        <th>City</th>
+                        <th>Province</th>
+                        <th>Postal Code</th>
+                        <th>Office Phone</th>
+                        <th>Cell Phone</th>
                         <th>Email</th>
+                        <th>Company</th>
+                        <th>Company Type</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -57,27 +62,36 @@
                         if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
                         if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
                         you will be able to see what will be set by looking at the name of the variable.-->
-                    <c:forEach var="marketingAgent" items="${listMarketingAgent}">
+                    <c:forEach var="client" items="${listClient}">
                         <tr>
-                            <td><c:out value="${marketingAgent.id}" /></td>
-                            <td><c:out value="${marketingAgent.firstName}" /></td>
-                            <td><c:out value="${marketingAgent.lastName}" /></td>
-                            <td><c:out value="${marketingAgent.phoneNo}" /></td>
-                            <td><c:out value="${marketingAgent.email}" /></td>
+                            <td><c:out value="${client.id}" /></td>
+                            <td><c:out value="${client.agentId}" /></td>
+                            <td><c:out value="${client.firstName}" /></td>
+                            <td><c:out value="${client.lastName}" /></td>
+                            <td><c:out value="${client.streetNumber}" /></td>
+                            <td><c:out value="${client.streetName}" /></td>
+                            <td><c:out value="${client.city}" /></td>
+                            <td><c:out value="${client.province}" /></td>
+                            <td><c:out value="${client.postalCode}" /></td>
+                            <td><c:out value="${client.telOffice}" /></td>
+                            <td><c:out value="${client.telCell}" /></td>
+                            <td><c:out value="${client.email}" /></td>
+                            <td><c:out value="${client.company}" /></td>
+                            <td><c:out value="${client.companyType}" /></td>
                             <td>
-                                <a href="editAgent?id=<c:out value='${marketingAgent.id}' />" class="btn btn-success btn-xs">Edit</a>
+                                <a href="editClient?id=<c:out value='${client.id}' />" class="btn btn-success btn-xs">Edit</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="deleteAgent?id=<c:out value='${marketingAgent.id}' />" class="btn btn-danger btn-xs">Delete</a>                     
+                                <a href="deleteClient?id=<c:out value='${client.id}' />" class="btn btn-danger btn-xs">Delete</a>                     
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
             <br>
+            <center><span style="color:red"><b><c:out value="${errorMessage}"/></b></span></center>
+            <br>
         </div>
-        <div class="col-sm-2">
-
-        </div>
+        
         <div class="col-sm-12" style="height:120px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 1.9em; color: white">
             <br>
             &COPY;2018 LMC ltd.

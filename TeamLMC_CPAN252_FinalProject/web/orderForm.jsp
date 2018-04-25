@@ -20,6 +20,10 @@
         <title>Add/Update Order Page</title>
     </head>
     <body>
+        <% 
+        session=request.getSession(false);  
+        Login newLogin = (Login)session.getAttribute("newLogin");
+        %>
         <div class="col-sm-12" style="height:140px;background-color: lightblue; text-align: center; font-family:'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace; font-size: 2.5em; color: white">
             <br>
             <b>Last Minute Club Printing Company.</b>
@@ -40,8 +44,10 @@
 
         </div>
         <div class="col-sm-4">
-            <!--if an order is passed (as update is selected) then form action is update
-            if order is null then it is insert,  also the Edit or add order is displayed-->
+            <!-- following sections will be depending on the situation
+                        if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
+                        if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
+                        you will be able to see what will be set by looking at the name of the variable.-->
             <c:if test="${order != null}">
                 <form action="updateOrder"  method="post">
             </c:if>
@@ -58,15 +64,15 @@
                     </c:if>
                 </h2>
                 <br>
-                <c:if test="${order != null}">
-                    <input type="hidden" name="id" value="<c:out value='${order.id}' />"/>
-                </c:if>
+                <input type="hidden" id="orderID" name="orderID" value="<c:out value='${order.id}'/>"/>
+                    <input type="hidden" id="agentID" name="agentID" value="<c:out value='${newLogin.agentId}' />">
+                
                     <div class="form-group">
                         <label for="flyerQty">Flyer Quantity:</label>
-                        <input type="number" class="form-control" id="flyerQty" name="flyerQty" placeholder="Enter Fly Quantity" value="<c:out value='${order.flyerQty}'/>"/>
+                        <input type="number" class="form-control" id="flyerQty" name="flyerQty" placeholder="Enter Fly Quantity" value="<c:out value='${order.flyerQTY}'/>"/>
                     </div>
                     <div class="form-group">
-                        <label for="flyerQty">Flyer Layout:</label>
+                        <label for="flyerLayout">Flyer Layout:</label>
                         <select class="custom-select mr-sm-2" id="flyerLayout" name="flyerLayout">
                             <option select>Select Layout...</option>
                             <option value="Portrait">Portrait</option>
@@ -76,18 +82,22 @@
                     </div>
                     <div class="form-group">
                         <c:forEach var="location" items="${listLocation}">
-                            <input type="checkbox" name="locationID" value="<c:out value='${location.id}'/>">&nbsp;&nbsp;
+                            <input type="checkbox" name="locationID" id="locationID" value="<c:out value='${location.id}'/>">&nbsp;&nbsp;
                             <c:out value="${location.locationName}"/>
                             <br>
                         </c:forEach>
                     </div>
                     <div class="form-group">
+                        <label for="imgFlyer">Upload Image:</label>
+                        <input type="file" id="flyerImg" name="flyerImg" accept=".jpg, .jpeg, .png" value="<c:out value='${order.flyerImg}'/>">
+                    </div>
+                    <div class="form-group">
                         <label for="paymentInfo">Credit Card Info:</label>
-                        <input type="text" class="form-control" id="creditNum" name="creditNum" placeholder="Enter Your Credit Card Number" value="<c:out value='${order.paymentInfo}'/>"/>
+                        <input type="text" class="form-control" id="creditNum" name="creditNum" placeholder="Enter Your Credit Card Number" value="<c:out value='${creditNum}'/>"/>
                         <br>
-                        <input type="text"  id="creditExp" name="creditExp" placeholder="Expiry date" value="<c:out value='${order.paymentInfo}'/>"/>
+                        <input type="text"  id="creditExp" name="creditExp" placeholder="Expiry date" value="<c:out value='${creditExp}'/>"/>
                         &nbsp;&nbsp;
-                        <input type="text"  id="creditCVV" name="creditCVV" placeholder="CCV" value="<c:out value='${order.paymentInfo}'/>"/>
+                        <input type="text"  id="creditCVV" name="creditCVV" placeholder="CCV" value="<c:out value='${creditCVV}'/>"/>
                     </div>
                     <div class="form-group">
                         <label for="personalCopy">Personal Copies</label>
@@ -95,12 +105,21 @@
                     </div>
                     <div class="form-group">
                         <label for="clients">Client:</label>
-                        <select class="custom-select mr-sm-2" id="clients" name="clients">
+                        <select class="custom-select mr-sm-2" id="clientID" name="clientID">
                             <option select>Select Client...</option>
-                            <option value="x">Placeholder</option>
-                            <option value="x">Placeholder</option>
-                            <option value="x">Placeholder</option>
+                            <c:forEach var="clients" items="${listClients}">
+                                <option value="<c:out value="${clients.id}" />"><c:out value="${clients.firstName}" /> <c:out value="${clients.lastName}" /></option>
+                            </c:forEach>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoiceNum">Invoice #:</label>
+                        <c:if test="${order != null}">
+                            <input type="text" class="form-control" id="invoiceNum" name="invoiceNum" value="<c:out value='${order.invoiceNum}'/>" />
+                        </c:if>
+                        <c:if test="${order == null}">
+                            <input type="text" class="form-control" id="invoiceNum" name="invoiceNum" value="<%= (int)Math.ceil(Math.random()*1000)%>" />
+                        </c:if>
                     </div>
                     <div class="form-group">
                         <label for="comments">Comments:</label>
@@ -109,11 +128,17 @@
                     <c:if test="${order != null}">
                         <div class="form-group">
                             <label for="artworkApprove">Artwork Approved?</label>
-                            <input type="checkbox" class="form-control" id="artworkApproved" name="artworkApproved" value="Yes">
+                            <select name='isFlyerArtApproved'>
+                                <option name="isFlyerArtApproved" value="1"  <c:if test="${order.isFlyerArtApproved=='1'}">selected</c:if>>Yes</option>
+                                <option name="isFlyerArtApproved" value="0"  <c:if test="${order.isFlyerArtApproved=='0'}">selected</c:if>>No</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="paymentReceived">Payment Received?</label>
-                            <input type="checkbox" class="form-control" id="paymentReceived" name="paymentReceived" value="Yes">
+                            <select name='isPaymentReceived'>
+                                <option name="isPaymentReceived" value="1"  <c:if test="${order.isPaymentReceived=='1'}">selected</c:if>>Yes</option>
+                                <option name="isPaymentReceived" value="0" <c:if test="${order.isPaymentReceived=='0'}">selected</c:if>>No</option>
+                            </select>
                         </div>
                     </c:if>
                     <button type="submit" value="Save" class="btn btn-primary">Submit</button>

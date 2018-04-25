@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List" %>
 <%@page import="PrintPackage.*" %>
@@ -27,6 +28,10 @@
             <br>
             <b>Last Minute Club Printing Company.</b>
         </div>
+        <!-- following sections will be depending on the situation
+                        if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
+                        if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
+                        you will be able to see what will be set by looking at the name of the variable.-->
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4" style="text-align: center">
@@ -36,11 +41,11 @@
                 <h5><b>Username:</b> <c:out value="${newLogin.userName}"/>&nbsp;&nbsp;<b>ID:</b> <c:out value="${newLogin.id}"/>&nbsp;&nbsp;<b>Agent ID:</b> <c:out value="${newLogin.agentId}"/></h5>
             </c:if>
             <hr style="border-width: 2px;">
-            <a href="x" class="btn btn-success btn-lg btn-block">Client Profiles</a>
+            <a href="agentList" class="btn btn-primary btn-lg btn-block">Client Profiles</a>
             <br><br>          
-            <a href="listOrder" class="btn btn-primary btn-lg btn-block">Place Orders</a>
+            <a href="listOrder" class="btn btn-info btn-lg btn-block">Place Orders</a>
             <br><br>          
-            <a href="x" class="btn btn-danger btn-lg btn-block">Return to Login</a>
+            <a href="x" class="btn btn-danger btn-lg btn-block">Logout</a>
             <br><br><br>
         </div>
         <div class="col-sm-4">

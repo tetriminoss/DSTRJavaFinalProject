@@ -3,7 +3,10 @@ package PrintPackage;
 
 
 public class Login {
-    
+        //this will be the same for other java classes (entities)
+    //make variables
+    //make a constructor, varies from what values are coming in then storing it.
+    //afterwards, there will be a set of getters and setters that are used for servlet methods that need these values
     int id;
     String userName, password, role;
     int agentId;

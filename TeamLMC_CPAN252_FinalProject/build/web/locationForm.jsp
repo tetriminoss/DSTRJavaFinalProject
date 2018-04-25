@@ -38,6 +38,10 @@
         <div class="col-sm-4">
 
         </div>
+        <!-- following sections will be depending on the situation
+                        if the situation is that checking if the textboxes are null something will be sent to the servlet to show something to the user,
+                        if the situation is that it is editing or showing something, a set of values from the database will be put in to the textboxes automatically
+                        you will be able to see what will be set by looking at the name of the variable.-->
         <div class="col-sm-4">
             <!--if a location is passed (as update is selected) then form action is update
             if location is null then it is insert,  also the Edit or add location is displayed-->
