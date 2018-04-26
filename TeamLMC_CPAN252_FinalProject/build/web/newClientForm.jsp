@@ -100,15 +100,15 @@
                     </div>
                     <div class="form-group">
                         <label for="telOffice">Office Phone:</label>
-                        <input type="text" class="form-control" id="telOffice" name="telOffice" placeholder="Enter Office Phone" value="<c:out value='${client.telOffice}' />">
+                        <input type="tel" class="form-control" id="telOffice" name="telOffice" placeholder="Enter Office Phone" value="<c:out value='${client.telOffice}' />">
                     </div>
                     <div class="form-group">
                         <label for="telCell">Cell Phone::</label>
-                        <input type="text" class="form-control" id="telCell" name="telCell" placeholder="Enter Cell Phone" value="<c:out value='${client.telCell}' />">
+                        <input type="tel" class="form-control" id="telCell" name="telCell" placeholder="Enter Cell Phone" value="<c:out value='${client.telCell}' />">
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="<c:out value='${client.email}' />">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" value="<c:out value='${client.email}' />">
                     </div>
                     <div class="form-group">
                         <label for="company">Company:</label>
